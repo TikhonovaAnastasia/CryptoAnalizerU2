@@ -1,4 +1,4 @@
-package com.javarush.tikhonova.сommand;
+package com.javarush.tikhonova.command;
 
 
 public class Decode extends FilesWork {
