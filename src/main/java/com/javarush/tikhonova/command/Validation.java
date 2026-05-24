@@ -6,14 +6,15 @@ import java.io.File;
 import java.nio.file.Files;
 
 public class Validation {
-    public boolean testKey(int key){
+    public boolean testKey(int key) {
         boolean test = true;
-        if(key<0 || key> Alphabet.alphabet.length){
+        if (key < 0 || key > Alphabet.alphabet.length) {
             test = false;
         }
         return test;
     }
-    public boolean testFile(String fileName){
+
+    public boolean testFile(String fileName) {
         boolean test = true;
         File file = new File(fileName);
         if (file.exists()) {
