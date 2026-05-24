@@ -12,9 +12,10 @@ public class BruteForce extends FilesWork {
 
     public BruteForce(String input, String output) {
         super(input, output, 0);
-        int bastKey = selectionKey(input);
-        System.out.println(bastKey);
-        writeInFile(input, output, bastKey);
+        int bestKey = selectionKey(input);
+        System.out.println("best key: " + bestKey);
+        System.out.println("Сompleted!");
+        writeInFile(input, output, bestKey);
     }
 
     public int selectionKey(String input) {
@@ -43,7 +44,7 @@ public class BruteForce extends FilesWork {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Ошибка в чтении или записи файла, класс FilesWork");
+            System.out.println("Ошибка в чтении файла, класс BruteForce");
         }
         return count;
     }
