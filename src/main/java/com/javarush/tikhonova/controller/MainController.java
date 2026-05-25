@@ -5,11 +5,13 @@ import com.javarush.tikhonova.command.BruteForce;
 import com.javarush.tikhonova.command.Decode;
 import com.javarush.tikhonova.command.Encode;
 import com.javarush.tikhonova.command.Validation;
+import com.javarush.tikhonova.command.analyze.Analyze2;
 
 public class MainController {
     Decode decode;
     Encode encode;
     BruteForce bruteForce;
+    Analyze2 analyze2;
     Validation validation = new Validation();
     public void decodeFile(String input, String output, int key){
         boolean boolKey = validation.testKey(key);
@@ -46,5 +48,21 @@ public class MainController {
         else {
             bruteForce = new BruteForce(input, output);
         }
+
+    }
+
+    public void analyze(String dictionary, String encrypted,  String analyzed){
+        boolean boolFile = validation.testFile(dictionary);
+        boolean boolFile2 = validation.testFile(encrypted);
+        boolean boolFile3 = validation.testFile(analyzed);
+
+        if(!boolFile|| !boolFile2 || !boolFile3){
+            System.out.println("Такого файла нет!");
+        }
+        else {
+            analyze2 = new Analyze2();
+            analyze2.writeRezultAnalyze(encrypted, dictionary, analyzed);
+        }
+
     }
 }

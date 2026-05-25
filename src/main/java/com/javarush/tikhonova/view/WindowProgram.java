@@ -15,6 +15,8 @@ public class WindowProgram extends JFrame implements ActionListener {
     private JTextField tnameFile1;
     private JLabel nameFile2;
     private JTextField tnameFile2;
+    private JLabel nameFile3;
+    private JTextField tnameFile3;
     private JRadioButton male;
     private JRadioButton female;
     private ButtonGroup gengp;
@@ -25,6 +27,7 @@ public class WindowProgram extends JFrame implements ActionListener {
     private JButton encode;
     private JButton decode;
     private JButton brute;
+    private JButton analize;
 
     private String keys[]
             = {"1", "2", "3", "4", "5",
@@ -76,6 +79,18 @@ public class WindowProgram extends JFrame implements ActionListener {
         tnameFile2.setLocation(210, 150);
         c.add(tnameFile2);
 
+        nameFile3 = new JLabel("Analyze file");
+        nameFile3.setFont(new Font("Arial", Font.PLAIN, 20));
+        nameFile3.setSize(100, 20);
+        nameFile3.setLocation(100, 200);
+        c.add(nameFile3);
+
+        tnameFile3 = new JTextField("C:\\Users\\Anastasia\\Desktop\\Java\\Experiment2GavaFX\\CryptoAnalizerU2\\text\\analyze3.txt");
+        tnameFile3.setFont(new Font("Arial", Font.PLAIN, 15));
+        tnameFile3.setSize(560, 20);
+        tnameFile3.setLocation(210, 200);
+        c.add(tnameFile3);
+
 
         gengp = new ButtonGroup();
         gengp.add(male);
@@ -115,6 +130,13 @@ public class WindowProgram extends JFrame implements ActionListener {
         brute.addActionListener(this);
         c.add(brute);
 
+        analize = new JButton("Analyze");
+        analize.setFont(new Font("Arial", Font.PLAIN, 15));
+        analize.setSize(100, 20);
+        analize.setLocation(100, 470);
+        analize.addActionListener(this);
+        c.add(analize);
+
         setVisible(true);
     }
 
@@ -129,6 +151,8 @@ public class WindowProgram extends JFrame implements ActionListener {
             mainController.decodeFile(tnameFile1.getText(), tnameFile2.getText(), Integer.parseInt((String) key.getSelectedItem()));
         } else if (e.getSource() == brute) {
             mainController.bruteForceFile(tnameFile1.getText(), tnameFile2.getText());
+        } else if (e.getSource() == analize) {
+            mainController.analyze(tnameFile1.getText(), tnameFile2.getText(), tnameFile3.getText());
         }
 
     }

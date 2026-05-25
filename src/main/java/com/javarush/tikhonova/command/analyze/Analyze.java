@@ -8,16 +8,16 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Analyze {
-
+public class Analyze implements Statistic{
+/*
+NOT USED
+ */
     public  final int COUNT_TRY_FIND = 10;
 
-    public static double[][] getBiGramStat(Path path) {
+    public double[][] getBiGramStat(Path path) {
         int length = Alphabet.alphabet.length;
         double[][] biGramStat = new double[length][length];
         char prefix = '\u0000';
@@ -35,7 +35,7 @@ public class Analyze {
                 prefix = current;
             }
         } catch (IOException e) {
-
+            System.out.println("Error in method getBiGramStat");
         }
         for (int i = 0; i < biGramStat.length; i++) {
             for (int j = 0; j < biGramStat[i].length; j++) {
@@ -46,7 +46,7 @@ public class Analyze {
     }
 
 
-    public static double calcDistance(double[][] firstMatrix, double[][] secondMatrix) {
+    public double calcDistance(double[][] firstMatrix, double[][] secondMatrix) {
         double destination = 0;
         if (firstMatrix.length == secondMatrix.length
                 && firstMatrix.length != 0
@@ -60,12 +60,12 @@ public class Analyze {
                 }
             }
         } else {
-
+            System.out.println("Error in method calcDistance");
         }
         return Math.sqrt(destination);
     }
 
-    public static void swap(double[][] matrix, int i, int j) {
+    public void swap(double[][] matrix, int i, int j) {
         //swap rows
         double[] row = matrix[i];
         matrix[i] = matrix[j];
@@ -78,7 +78,7 @@ public class Analyze {
         }
     }
 
-    public static double getCharsByRandomSwapper(char[] chars, double[][] genom, double[][] original) {
+    public double getCharsByRandomSwapper(char[] chars, double[][] genom, double[][] original) {
         int skipSwapCounter = 0;
         double bestProbeDistance = Double.MAX_VALUE;
         genom = genom.clone();
@@ -106,10 +106,6 @@ public class Analyze {
         }
         return bestProbeDistance;
     }
-
-
-
-
 
     private List<Character> findBestVersionAlphabet(String encryptedFilename, String dictionaryFilename) {
         double[][] matrix = getBiGramStat(PathBuilder.get(encryptedFilename));
@@ -152,7 +148,7 @@ public void writeRezultAnalyze(String encryptedFilename, String dictionaryFilena
                             : character);
         }
     } catch (IOException e) {
-
+        System.out.println("Error in method writeRezultAnalyze");
     }
 }
 
