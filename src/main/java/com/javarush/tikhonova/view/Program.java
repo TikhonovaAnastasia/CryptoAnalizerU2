@@ -1,15 +1,5 @@
 package com.javarush.tikhonova.view;
 
-import com.javarush.tikhonova.command.Encode;
-import com.javarush.tikhonova.command.analyze.Analyze;
-import com.javarush.tikhonova.command.analyze.Analyze2;
-
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
-import java.net.URL;
-import java.util.Objects;
-
 public class Program {
     public static void main(String[] args) {
         System.out.println("Encode: Name file 1 = original fail; Name file 2 = the encoded file; key = shift");
