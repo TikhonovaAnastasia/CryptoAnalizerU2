@@ -8,13 +8,13 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Analyze2 implements Statistic2 {
-    public  final int COUNT_TRY_FIND = 10;
     public Map<Character, Double> getBiGramStat(Path path) {
         Map<Character, Double> frequency = new HashMap<>();
         double[] lettersFrequency = new double[Alphabet.alphabet.length];
@@ -87,7 +87,7 @@ public class Analyze2 implements Statistic2 {
                     chars[j] = chars[i];
                     chars[i] = ch;
                 } else {
-                    swap(genom2, j, i); //revert
+                    swap(genom2, j, i);
                     skipSwapCounter++;
                 }
             }
@@ -107,18 +107,17 @@ public class Analyze2 implements Statistic2 {
                 i += COUNT_TRY_FIND;
                 bestDistance = probeDistance;
                 bestChars = chars.clone();
-                //For debug only, here System.out.println - not the best solution. Here need the logger
-
             }
         }
 
         return getCharacterList(bestChars);
     }
     private List<Character> getCharacterList(char[] chars) {
-        return String.valueOf(chars)
-                .chars()
-                .mapToObj(c -> (char) c)
-                .toList();
+        ArrayList<Character> array= new ArrayList<>();
+        for (int i = 0; i < chars.length; i++) {
+            array.add(chars[i]);
+        }
+        return array;
     }
     public void writeRezultAnalyze(String encryptedFilename, String dictionaryFilename, String analyzedFilename) {
         List<Character> dictChar = getCharacterList(Alphabet.alphabet);

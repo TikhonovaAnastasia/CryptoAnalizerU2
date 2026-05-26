@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.util.Map;
 
 public interface Statistic2 {
+    int COUNT_TRY_FIND = 10;
     Map<Character, Double> getBiGramStat(Path path);
     double calcDistance(Map<Character, Double> original, Map<Character, Double> dem);
     void swap(Map<Character, Double> letters, int i, int j);
