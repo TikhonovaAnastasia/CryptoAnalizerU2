@@ -44,6 +44,7 @@ public class Analyze2 implements Statistic2 {
     }
 
     public double calcDistance(Map<Character, Double> original, Map<Character, Double> demo) {
+
         double destination = 0;
         if (original.size() == demo.size()
                 && original.size() != 0
@@ -57,7 +58,8 @@ public class Analyze2 implements Statistic2 {
         } else {
             System.out.println("Error in method calcDistance");
         }
-        return Math.sqrt(destination);
+        System.out.println("Best distance = " + destination);
+        return destination;
     }
     public void swap(Map<Character, Double> letters, int i, int j) {
         double row = letters.get(Alphabet.alphabet[i]);
@@ -106,9 +108,10 @@ public class Analyze2 implements Statistic2 {
                 bestDistance = probeDistance;
                 bestChars = chars.clone();
                 //For debug only, here System.out.println - not the best solution. Here need the logger
-                System.out.println("Best distance = " + bestDistance);
+
             }
         }
+
         return getCharacterList(bestChars);
     }
     private List<Character> getCharacterList(char[] chars) {

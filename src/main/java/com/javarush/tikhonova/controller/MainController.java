@@ -52,17 +52,23 @@ public class MainController {
     }
 
     public void analyze(String dictionary, String encrypted,  String analyzed){
+        /*
         boolean boolFile = validation.testFile(dictionary);
         boolean boolFile2 = validation.testFile(encrypted);
         boolean boolFile3 = validation.testFile(analyzed);
 
-        if(!boolFile|| !boolFile2 || !boolFile3){
-            System.out.println("Такого файла нет!");
-        }
-        else {
+        if(!boolFile){
+            System.out.println("Такого файла нет! " + dictionary);
+        } else if (!boolFile2) {
+            System.out.println("Такого файла нет! " + encrypted);
+        } else if (!boolFile3) {
+            System.out.println("Такого файла нет! " + analyzed);
+        } else {
+
+         */
             analyze2 = new Analyze2();
             analyze2.writeRezultAnalyze(encrypted, dictionary, analyzed);
-        }
+        //}
 
     }
 }
